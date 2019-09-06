@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="view overlay">
                     <img class="card-img-top" src="{{ movie.poster }}" alt="{{ movie.title }} poster">
-                    <a href="#">
+                    <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
                     </div>
@@ -41,7 +41,7 @@
 {% macro displayReviews(review_list) %}
     {% for review in review_list %}
     <div class="container">
-        
+
         <ul>
             <li><h3> {{ review.title}} </h3></li>
             
