@@ -36,8 +36,13 @@ def movie(id):
     movie = get_movie(id)
     title = f'{movie.title}'
     reviews = Review.get_reviews(movie.id)
+    search_movie = request.args.get('movie_query')
 
-    return render_template('movie.html', title = title, movie = movie, reviews = reviews)
+    if search_movie:
+        return redirect(url_for('.search', movie_name=search_movie))
+    else:
+    
+        return render_template('movie.html', title = title, movie = movie, reviews = reviews)
 
 
 @main.route('/search/<movie_name>')
@@ -49,6 +54,7 @@ def search(movie_name):
     movie_name_format = "+".join(movie_name_list)
     searched_movies = search_movie(movie_name_format)
     title = f'search results for {movie_name}'
+    
     return render_template('search.html', movies = searched_movies)
 
 
@@ -65,4 +71,10 @@ def new_review(id):
         return redirect(url_for('.movie', id = movie.id ))
 
     title = f'{movie.title} review'
-    return render_template('new_review.html', title = title, review_form=form, movie=movie)
+    search_movie = request.args.get('movie_query')
+
+    if search_movie:
+        return redirect(url_for('.search', movie_name=search_movie))
+    else:
+    
+        return render_template('new_review.html', title = title, review_form=form, movie=movie)
