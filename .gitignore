@@ -4,3 +4,4 @@ instance/
 .vscode
 .env
 __pycache__
+start.sh
