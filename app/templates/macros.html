@@ -39,15 +39,15 @@
 
 <!-- Displaying reviews macro -->
 {% macro displayReviews(review_list) %}
+<div class="container mb-4">    
     {% for review in review_list %}
-    <div class="container">
 
         <ul>
-            <li><h3> {{ review.title}} </h3></li>
+            <li><h4> {{ review.movie_title}} </h4></li>
             
-        <p> {{ review.review }}</p>
+        <p> {{ review.movie_review }}</p>
         </ul>
-
-    </div>
+    
     {% endfor %}
+</div>
 {% endmacro %}
